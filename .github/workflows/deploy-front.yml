@@ -23,10 +23,13 @@ jobs:
             cd /home/Frontend-bp/bp-frontend/
             git pull
 
-      - name: Deploy Frontend
+      - name: Build Frontend
         run: |
             echo "Making deploy..."
             cd /home/Frontend-bp/bp-frontend/
             docker-compose down -v
             docker-compose build --no-cache
+
+      - name: Serve Frontend
+        run: |
             docker-compose up -d
