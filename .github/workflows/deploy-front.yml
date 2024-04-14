@@ -16,3 +16,9 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
+
+      - name: Creating image
+        run: |
+            echo "Making pull"
+            cd /home/Frontend-bp/bp-frontend/
+            git pull
