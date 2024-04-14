@@ -10,6 +10,7 @@ interface Props {
 }
 
 const Modal = ({ show, onClose }: Props) => {
+    console.log('SE ABRE EL MODAL')
     const [isBrowser, setIsBrowser] = useState(false)
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const Modal = ({ show, onClose }: Props) => {
                 <div className="header">
                     <button onClick={onClose()} className="btn close-btn"> Close </button>
                 </div>
-                <Form/>
+                <Form onClose={onClose()}/>
                 <Register/>
             </div>
         </div>

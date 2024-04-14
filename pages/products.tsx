@@ -16,6 +16,7 @@ import { Product } from '../interfaces/types'
 // }
 
 const ProductsView = () => {
+  console.log('DENTRO DE PRODUCTS VIEW')
   const location = useLocation()
   const { search } = location
 

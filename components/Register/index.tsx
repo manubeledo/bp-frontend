@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { postData } from '../../utils/fetchData'
-import React from "react"
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({

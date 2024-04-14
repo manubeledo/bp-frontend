@@ -40,7 +40,7 @@ export default function Carrousel(): JSX.Element {
     slidesToScroll: 1,
     autoplay: true,
     beforeChange: (
-      current: React.SetStateAction<number>,
+      // current: React.SetStateAction<number>,
       next: React.SetStateAction<number>
     ) => setImageIndex(next),
   };

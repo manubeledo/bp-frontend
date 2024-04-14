@@ -2,12 +2,16 @@ import { useState } from "react"
 import { postData } from '../../utils/fetchData'
 import  getGoogleOAuthURL  from '../../utils/getGoogleUrl'
 import { setCookie } from "nookies"
-import { actionCreators, State } from '../../global/store'
-import {useDispatch, useSelector} from 'react-redux'
+import { actionCreators } from '../../global/store'
+import {useDispatch} from 'react-redux'
 import { bindActionCreators } from 'redux';
 
-const Form = () => {
-    const authStatus = useSelector((state: State) => state.auth)
+type FormProps = {
+    onClose: () => void;
+  };
+
+const Form: React.FC<FormProps> = ({ onClose }) => {
+    // const authStatus = useSelector((state: State) => state.auth)
     const dispatch = useDispatch()
     const { auth } = bindActionCreators(actionCreators, dispatch)
 
@@ -39,6 +43,11 @@ const Form = () => {
 
         // router.push('/')
         console.log(myData, 'BACKEND RESPONSE.')
+        if (myData.msg === 'Login Success!') {
+            onClose()
+        } else {
+            alert('Usuario o contraseña incorrectos')
+        }
     }
 
     return (

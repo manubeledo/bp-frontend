@@ -7,12 +7,19 @@
 import { useState } from "react";
 import Modal from './Auth_modal'
 import CartWidget from '../components/Cart/cartWidget'
-
+import { useSelector } from "react-redux";
+import { actionCreators } from '../global/store'
+import {useDispatch} from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 const NavBar = () => {
-  // const auth = useSelector((state: State) => state.auth)
+  const dispatch = useDispatch()
+  const authStatus = useSelector((state: any) => state.auth)
 
-  const[anchorEl, setAnchorEl] = useState(null);
+  console.log('Auth desde AUTH MODAL...', authStatus.status)
+
+  // const[anchorEl, setAnchorEl] = useState(null);
+  let anchorEl = null
   const [showModal, setShowModal] = useState(false)
   const open = Boolean(anchorEl);
 
@@ -54,6 +61,14 @@ const NavBar = () => {
     setShowModal(!showModal);
   };
 
+  const { auth } = bindActionCreators(actionCreators, dispatch)
+
+  const handleLogOut = () => {
+    console.log("Gestionar Logout")
+    auth(false, '', {})
+    console.log('AUTH STATUS...', authStatus)
+  }
+
   return (
     <>
       <nav>
@@ -84,10 +99,22 @@ const NavBar = () => {
             <li className="flex__li-item">
               <a className="navLink" href="/api/productos">Contactame</a>
             </li>
-            <li className="flex__li-item">
-              <a className="navLink" onClick={() => setShowModal(true)}>Inicia Sesión</a>
-              <Modal show={showModal} onClose={() => handlePopUpToggle}></Modal>
-            </li>
+            {
+              authStatus.status ? 
+              (
+              <li className="flex__li-item">
+                <a className="navLink" onClick={handleLogOut} href="/">Logout</a>
+              </li>
+              ) 
+              : 
+              (
+              <li className="flex__li-item">
+                <a className="navLink" onClick={() => setShowModal(true)}>Inicia Sesión</a>
+                <Modal show={showModal} onClose={() => handlePopUpToggle}></Modal>
+              </li>
+              )
+            }
+
             <li className="flex__li-item">
               <a className="navLink" href="/cart">
               <CartWidget/>

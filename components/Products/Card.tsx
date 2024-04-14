@@ -3,10 +3,9 @@ import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import ProductImage from './ProductImage'
 // import { useShoppingCart } from '../contexts/cartContext'
-import React from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { actionCreators, State } from '../../global/store/index'
+import { actionCreators } from '../../global/store/index'
 
 type CardProps = {
     id: number;
