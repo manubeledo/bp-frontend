@@ -19,6 +19,14 @@ jobs:
 
       - name: Creating image
         run: |
-            echo "Making pull"
+            echo "Making pull..."
             cd /home/Frontend-bp/bp-frontend/
             git pull
+
+      - name: Deploy Frontend
+        run: |
+            echo "Making deploy..."
+            cd /home/Frontend-bp/bp-frontend/
+            docker-compose down -v
+            docker-compose build --no-cache
+            docker-compose up -d
