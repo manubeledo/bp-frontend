@@ -29,6 +29,7 @@ EXPOSE 3000
 
 # Establece el script de inicio como ejecutable
 RUN chmod +x /usr/src/app/docker-entrypoint.sh
+
 # Comando para ejecutar la aplicación
 CMD ["/usr/src/app/docker-entrypoint.sh"]
 # CMD ["node", "dist/index.js"] # Ajusta esto según tu script de inicio
