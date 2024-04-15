@@ -11,6 +11,7 @@ COPY package.json package-lock.json ./
 RUN npm cache clean --force \
     && npm prune \
     && rm -rf /root/.npm /root/.node-gyp \
+    && npm install -g typescript \
     && npm install --only=prod
 
 # Copiar todos los archivos del proyecto al directorio de trabajo en el contenedor
