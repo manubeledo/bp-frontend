@@ -10,6 +10,7 @@ COPY package.json package-lock.json ./
 # Limpiar caché y archivos temporales
 RUN npm cache clean --force \
     && npm install -g typescript \
+    && npm i --save-dev @types/js-cookie @types/react-slick @types/js-cookies \
     && npm install --only=prod
 
 # Copiar todos los archivos del proyecto al directorio de trabajo en el contenedor
