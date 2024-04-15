@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node"],
+    "types": ["node", "react", "react-dom", "react-router-dom", "js-cookie", "react-slick"],
     "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
