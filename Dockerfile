@@ -7,8 +7,11 @@ WORKDIR /app
 # Copiar los archivos package.json y package-lock.json para instalar dependencias
 COPY package.json package-lock.json ./
 
-# Instalar las dependencias
-RUN npm install
+# Limpiar caché y archivos temporales
+RUN npm cache clean --force \
+    && npm prune \
+    && rm -rf /root/.npm /root/.node-gyp \
+    && npm install --only=prod
 
 # Copiar todos los archivos del proyecto al directorio de trabajo en el contenedor
 COPY . .
