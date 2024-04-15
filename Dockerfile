@@ -28,7 +28,7 @@ COPY docker-entrypoint.sh /usr/src/app/docker-entrypoint.sh
 EXPOSE 3000
 
 # Establece el script de inicio como ejecutable
-RUN chmod +x /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/docker-entrypoint.sh
 
 # Comando para ejecutar la aplicación
 CMD ["/usr/src/app/docker-entrypoint.sh"]
