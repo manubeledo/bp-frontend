@@ -19,8 +19,17 @@ RUN rm -rf ./dist
 # Construir la aplicación Vite para producción
 RUN npm run build
 
-# Exponer el puerto en el que se ejecutará la aplicación (debe coincidir con el puerto configurado en Vite)
+# Copia el script de inicio
+COPY docker-entrypoint.sh /usr/src/app/docker-entrypoint.sh
+# (Opcional) Si necesitas herramientas adicionales, descomenta estas líneas
+# RUN apt-get update && apt-get install -y build-essential
+
+# Expone el puerto en el que se ejecuta la aplicación
 EXPOSE 3000
 
-# Comando para ejecutar la aplicación cuando el contenedor se inicie
-CMD ["npm", "start"]
+# Establece el script de inicio como ejecutable
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# Comando para ejecutar la aplicación
+CMD ["/usr/src/app/docker-entrypoint.sh"]
+# CMD ["node", "dist/index.js"] # Ajusta esto según tu script de inicio
