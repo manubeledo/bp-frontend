@@ -1,1 +1,1 @@
-serve dist
+npm run start
