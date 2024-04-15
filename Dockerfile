@@ -9,8 +9,6 @@ COPY package.json package-lock.json ./
 
 # Limpiar caché y archivos temporales
 RUN npm cache clean --force \
-    && npm prune \
-    && rm -rf /root/.npm /root/.node-gyp \
     && npm install -g typescript \
     && npm install --only=prod
 
